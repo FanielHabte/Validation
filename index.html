@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Fail / Pass </title>
+</head>
+
+<body>
+    <h1>Fail / Pass</h1>
+    <form id="myForm">
+
+        <label for="firstName">First Name:</label><br>
+        <input type="text" id="firstName" name="firstName" required><br>
+
+        <label for="lastName">Last Name:</label><br>
+        <input type="text" id="lastName" name="lastName" required><br>
+
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" required><br>
+
+        <button type="button"  id="button" >Check</button>
+        
+    </form>
+
+    <script>
+        const button = document.getElementById("button");
+        function validatePassword(password) {
+            // Check if the password > 8 characters
+            if (password.length < 8) {
+                return false;
+            }
+
+            // Check for uppercase letter
+            if (password.toLowerCase() === password) {
+                return false;
+            }
+
+            // Check for lowercase letter
+            if (password.toUpperCase() === password) {
+                return false;
+            }
+
+            return true;
+        }           
+        //event listner to make the button functional
+        button.addEventListener("click", function validateForm() {
+            const firstName = document.getElementById("firstName").value;
+            const lastName = document.getElementById("lastName").value;
+            const password = document.getElementById("password").value;
+
+                // Check if first and last name are not missing
+            if (firstName === "" || lastName === "") {
+                alert("Please enter both first and last names.");
+                return;
+            }
+
+            // Validate the password
+            if (!validatePassword(password)) {
+                alert("Invalid password.");
+                return;
+            }
+
+            // All fields are valid
+            alert("All valid!");
+                    
+                })
+    </script>
+   </body>
+</html>
